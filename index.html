@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="ar" dir="ltr">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Yassin & Ziad's Tree Fort</title>
+    <link rel="icon" type="image/png" href="assets/favicon.png">
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Luckiest+Guy&family=Cairo:wght@400;600;700&display=swap"
+        rel="stylesheet">
+
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+    <!-- ==============================
+         PASSCODE LOCK SCREEN
+         ============================== -->
+    <div class="lock-screen" id="lockScreen">
+        <div class="lock-box">
+            <div class="lock-icon">🔐</div>
+            <h1 class="lock-title">Yassin & Ziad's<br>Tree Fort</h1>
+            <p class="lock-subtitle">Enter the Secret Date to open the cave!</p>
+            <div class="lock-input-wrap">
+                <input type="text" id="passcodeInput" class="lock-input" placeholder="DD-M-YYYY" maxlength="10"
+                    autocomplete="off">
+            </div>
+            <button class="lock-btn" id="passcodeBtn">⚔️ Open the Cave! ⚔️</button>
+            <p class="lock-error" id="lockError"></p>
+        </div>
+    </div>
+
+    <!-- ==============================
+         MAIN SITE (hidden until unlocked)
+         ============================== -->
+    <div class="site" id="mainSite">
+
+        <!-- Hidden audio -->
+        <audio id="bg-music" src="assets/song.mp3.mp3" loop preload="auto"></audio>
+
+        <!-- Spinning Vinyl — top right -->
+        <img src="assets/music-vinyl.png.png" alt="Toggle Music" class="vinyl" id="vinyl">
+
+        <!-- Photo Screen — inside BMO -->
+        <div class="screen" id="imageContainer">
+            <div class="placeholder" id="placeholder">
+                <span class="placeholder-icon">🎮</span>
+                <span class="placeholder-text">Press a button!</span>
+            </div>
+            <img src="" alt="Memory" id="memoryImage" class="photo hidden">
+        </div>
+
+        <!-- Story Text — over scroll -->
+        <div class="story" id="storyContainer">
+            <p class="story-text" id="storyText" dir="rtl"></p>
+        </div>
+
+        <!-- Invisible Click Zones -->
+        <div class="zone zone-memory" id="btnNormal" onclick="unlockMemory('normal')"></div>
+        <div class="zone zone-goofy" id="btnGoofy" onclick="unlockMemory('goofy')"></div>
+        <a class="zone zone-instagram"
+            href="https://www.instagram.com/ya66iin?utm_source=ig_web_button_share_sheet&igsh=ZDNlZDc0MzIxNw=="
+            target="_blank" rel="noopener noreferrer"></a>
+        <div class="zone zone-basmala" id="basmalaZone"></div>
+
+        <!-- Heart container -->
+        <div id="heartContainer"></div>
+
+    </div>
+
+    <script src="script.js"></script>
+</body>
+
+</html>
