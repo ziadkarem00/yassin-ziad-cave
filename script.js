@@ -18,7 +18,6 @@ function attemptUnlock() {
     const entered = passcodeInput.value.trim();
 
     if (CORRECT_DATES.includes(entered)) {
-        // Correct! Unlock the site
         lockScreen.classList.add('unlocked');
         mainSite.classList.add('visible');
         lockError.textContent = '';
@@ -33,11 +32,10 @@ function attemptUnlock() {
                 isMusicPlaying = true;
                 console.log('🎵 Music auto-started');
             }).catch(() => {
-                console.log('🔇 Auto-play blocked — user must click vinyl');
+                console.log('🔇 Auto-play blocked — click vinyl to start');
             });
         }
     } else {
-        // Wrong passcode
         passcodeInput.classList.add('shake');
         lockError.textContent = '❌ Wrong Date! Try again!';
         setTimeout(() => {
@@ -54,8 +52,8 @@ passcodeInput.addEventListener('keydown', function (e) {
 // =============================================
 // CONFIGURATION
 // =============================================
-const totalNormalPhotos = 120;
-const totalGoofyPhotos = 100;
+const totalNormalPhotos = 115;
+const totalGoofyPhotos = 92;
 
 // =============================================
 // STORY DATABASE
@@ -215,10 +213,7 @@ const goofyStories = {
     89: "امتى شعري ييكبر",
     90: "Swag Boi",
     91: "The Real Chill Guy",
-    92: "سندوتش",
-    93: "الشيخ وزياد كارم",
-    94: "التأمل و التفكير االيومي",
-    95: "Dread Gawd"
+    92: "سندوتش"
 };
 
 // =============================================
@@ -293,7 +288,8 @@ function unlockMemory(type) {
     if (isNormal) lastNormalPhoto = photoNumber;
     else lastGoofyPhoto = photoNumber;
 
-    const imagePath = `assets/${folder}/photo (${photoNumber}).jpg`;
+    // *** CRUCIAL: photo (N).jpg format with space and parentheses ***
+    const imagePath = "assets/" + folder + "/photo (" + photoNumber + ").jpg";
 
     imageContainer.classList.add('loading');
     storyContainer.classList.remove('visible');
@@ -321,10 +317,11 @@ function unlockMemory(type) {
     };
 
     img.onerror = function () {
+        // Photo missing — try a different one silently
         imageContainer.classList.remove('loading');
-        storyText.textContent = `⚠️ Photo ${photoNumber} not found in ${folder}/`;
-        storyContainer.classList.add('visible');
-        console.error(`Failed to load: ${imagePath}`);
+        console.warn('Skipped missing photo: ' + imagePath);
+        // Try again with a different number
+        unlockMemory(type);
     };
 
     img.src = imagePath;
