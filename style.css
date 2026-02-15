@@ -506,34 +506,37 @@ body {
     }
 
     .screen {
-        top: 22%;
-        left: 8%;
-        width: 84%;
-        height: 36%;
+        top: 26%;
+        left: 11%;
+        width: 78%;
+        height: 33%;
+        border-radius: 20px;
     }
 
     .story {
-        top: 62%;
-        left: 10%;
-        width: 80%;
+        top: 61%;
+        left: 15%;
+        width: 70%;
         height: 10%;
     }
 
     .story-text {
-        font-size: clamp(14px, 3.5vw, 22px);
+        font-size: 14px;
+        color: #4a3b2a;
+        text-shadow: none;
     }
 
     .zone-memory {
         bottom: 5%;
-        left: 10%;
-        width: 28%;
+        left: 12%;
+        width: 25%;
         height: 12%;
     }
 
     .zone-goofy {
         bottom: 5%;
-        right: 10%;
-        width: 28%;
+        right: 12%;
+        width: 25%;
         height: 12%;
     }
 
